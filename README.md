@@ -1,1 +1,1 @@
-# tech-java-effective-java
+# stack
