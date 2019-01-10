@@ -1,5 +1,5 @@
 # Kotlin Basic
-Link: [kotlin 공식문서](https://kotlinlang.org/docs/reference/basic-types.html, "kotlin doc")
+Link: [kotlin 공식문서](https://kotlinlang.org/docs/reference/basic-types.html)
 안드로이드 공식 언어, 인텔리J에서 적극 지원 중
 간결함(자바보다), 함수형
 
