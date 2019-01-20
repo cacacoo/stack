@@ -1,5 +1,5 @@
 # Hello Airflow
-![guide](https://aldente0630.github.io/data-engineering/2018/06/17/developing-workflows-with-apache-airflow.html)
+Link: [따라한 가이드](https://aldente0630.github.io/data-engineering/2018/06/17/developing-workflows-with-apache-airflow.html)
 
 ## 설치
 ```bash
@@ -24,8 +24,10 @@ airflow scheduler
 
 ## 작업 흐름
 Airflow 상의 작업흐름은 방향성 비순환 그래프(DAG)로 설계된다. 즉, 작업흐름을 짤 때 그것이 어떻게 독립적으로 실행가능한 태스크들로 나뉠 수 있을까 생각해봐야한다. 그 다음에야 각 태스크를 그래프로
-결합하여 전체적인 논리 흐름에 맞게 합칠 수 있다.
-![DAG](https://github.com/cacacoo/stack/blob/master/resource/images/airflow_1_DAG.png)
+결합하여 전체적인 논리 흐름에 맞게 합칠 수 있다.  
+  
+![DAG](https://github.com/cacacoo/stack/blob/master/resource/images/airflow_1_DAG.png)  
+
 그래프 모양이 작업흐름의 전반적인 논리 구조를 결정한다. Airflow DAG는 여러 분기를 포함할 수 있고 작업흐름 실행 시 건너뛸 지점과 중단할 지점을 결정할 수 있다.
 
 ## Operator and Task
@@ -135,7 +137,8 @@ class MyFirstPlugin(AirflowPlugin):
 
 MyFirstPlugin이라는 새로운 Airflow 플러그인을 정의하고 있다. 해당 plugin을 정해진 위치 (airflowhome/plugins)에 저장하면 dags하위 폴더에 밑에서 불러서 쓸 수 있다.
 
-새로 추가한 MyFirstPlugin 코드를 아까 작성한 hello_airflow.py 내 DAG에 추가해주고, 다시 scheduler와 web server 를 띄워주면 적용된 것을 확인할 수 있다.
+새로 추가한 MyFirstPlugin 코드를 아까 작성한 hello_airflow.py 내 DAG에 추가해주고, 다시 scheduler와 web server 를 띄워주면 적용된 것을 확인할 수 있다.  
+
 ![newTask](https://github.com/cacacoo/stack/blob/master/resource/images/airflow_1_task.png)
 
 ## 이제 Airflow에서 제공한 많은 예제들을 보며 하나하나 학습하자
