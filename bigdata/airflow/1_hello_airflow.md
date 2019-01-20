@@ -23,7 +23,8 @@ airflow scheduler
  복잡한 계산을 요하는 작업흐름과 데이터 처리 파이프라인을 조율하기 위해 만든 오픈소스 도구이다. 길이가 긴 스크립트 실행을 cron으로 돌리거나 빅데이터 처리 배치 작업을 정기적으로 수행하려고 할 때 Airflow가 도움이 될 수 있다.
 
 ## 작업 흐름
-Airflow 상의 작업흐름은 방향성 비순환 그래프(DAG)로 설계된다. 즉, 작업흐름을 짤 때 그것이 어떻게 독립적으로 실행가능한 태스크들로 나뉠 수 있을까 생각해봐야한다. 그 다음에야 각 태스크를 그래프로 결합하여 전체적인 논리 흐름에 맞게 합칠 수 있다.
+Airflow 상의 작업흐름은 방향성 비순환 그래프(DAG)로 설계된다. 즉, 작업흐름을 짤 때 그것이 어떻게 독립적으로 실행가능한 태스크들로 나뉠 수 있을까 생각해봐야한다. 그 다음에야 각 태스크를 그래프로
+결합하여 전체적인 논리 흐름에 맞게 합칠 수 있다.
 ![DAG](https://github.com/cacacoo/stack/blob/master/resource/images/airflow_1_DAG.png)
 그래프 모양이 작업흐름의 전반적인 논리 구조를 결정한다. Airflow DAG는 여러 분기를 포함할 수 있고 작업흐름 실행 시 건너뛸 지점과 중단할 지점을 결정할 수 있다.
 
@@ -72,11 +73,11 @@ dag = DAG('hello_airflow', description="simple tutorial DAG",
          start_date= datetime(2019, 1, 20), catchup=False)
 ```
 파라미터 순서로
-1: DAG 이름설정
-2: DAG 설명
-3.리눅스/유닉스 크론표현식,  분[0-59 or 시작시간/단위] 시[0-23] 일[1-31 /?] 월[1-12] 요일[0-6 /?]
-https://gs.saro.me/dev?page=3&tn=548
-4: DAG 시작일자
+- DAG 이름설정
+- DAG 설명
+- 리눅스/유닉스 크론표현식
+  분[0-59 or 시작시간/단위] 시[0-23] 일[1-31 /?] 월[1-12] 요일[0-6 /?]
+- DAG 시작일자
 
 ```python
 dummy_operator = DummyOperator(task_id='dummy_task', retries=3, dag=dag)
@@ -85,15 +86,16 @@ hello_operator = PythonOperator(task_id='hello_task', python_callable=print_hell
 
 dummy_operator >> hello_operator
 ```
+
 더미 오퍼레이터 - 아무일도 하지 않는 오퍼레이터
-1: task 명
-2: 실패 시 반복횟수
-3: task를 등록할 dag 주소
+- task 명
+- 실패 시 반복횟수
+- task를 등록할 dag 주소
 
 파이썬 오퍼레이터 - 파이썬 함수 호출용 오퍼레이터
-1: task명
-2: 파이썬 함수
-3: task 등록할 dag 주소
+- task명
+- 파이썬 함수
+- task 등록할 dag 주소
 
 
 ## 나만의 오퍼레이터 만들기
@@ -131,13 +133,13 @@ class MyFirstPlugin(AirflowPlugin):
     operators = [MySuperOperator]
 ```
 
-MyFirstPlugin이라는 새로운 Airflow 플러그인을 정의하고 있다. 해당 plugin을 정해진 위치 (airflowhome/plugins)에 저장하면 dags하위 폴더에 밑에서 불러서 쓸 수 잇다.
+MyFirstPlugin이라는 새로운 Airflow 플러그인을 정의하고 있다. 해당 plugin을 정해진 위치 (airflowhome/plugins)에 저장하면 dags하위 폴더에 밑에서 불러서 쓸 수 있다.
 
 새로 추가한 MyFirstPlugin 코드를 아까 작성한 hello_airflow.py 내 DAG에 추가해주고, 다시 scheduler와 web server 를 띄워주면 적용된 것을 확인할 수 있다.
 ![newTask](https://github.com/cacacoo/stack/blob/master/resource/images/airflow_1_task.png)
 
 ## 이제 Airflow에서 제공한 많은 예제들을 보며 하나하나 학습하자
-[ ] task 결과를 어떻게 다음 task로 파람으로 넘겨주나?
-[ ] task 를 병렬 실행하는 방법은?
+- task 결과를 어떻게 다음 task로 파람으로 넘겨주나?
+- task 를 병렬 실행하는 방법은?
 
 
