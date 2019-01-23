@@ -48,7 +48,7 @@ object MyFirstScala {
       if(n >= as.length) -1
       else if (P(as(n), keyword)) n
       else loop(n + 1)
-
+      
     loop(0)
   }
 
